@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue2 start</title>
+</head>
+<body>
+  <div id="app">
+    <p>{{ nickName }}</p>
+    <p>{{ nickName.toUpperCase() }}</p>
+    <p>{{ nickName + ', how are you?' }}</p>
+    <p>{{ age > 18 ? 'adult' : 'child' }}</p>
+    <p> {{ friend.name + ' ' +  friend.desc }}</p>
+    <div v-html="link"></div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: 'hello vue',
+        nickName: 'tony',
+        age: 18,
+        friend: {
+          name: 'jepson',
+          desc: 'love vue'
+        },
+        link: `
+        <a href="https://github.com/zss0527">github</a>
+        `
+      }
+    })
+  </script>
+</body>
+
+
+</html>

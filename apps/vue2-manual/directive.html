@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>directive</title>
+    <link rel="stylesheet" href="./css/index.css" />
+</head>
+<body>
+<div id="app">
+    <div v-html="link"></div>
+    <div>
+        v-show: <span v-show="!isShow">content</span>
+    </div>
+    <div>
+        v-if: <span v-show="!isShow">content</span>
+    </div>
+
+    <div>
+        <p v-if="gender === 'male'">Male</p>
+        <p v-else>Female</p>
+    </div>
+
+    <div>
+        <p v-if="scope >= 90">risk</p>
+        <p v-else-if="scope >= 80">good</p>
+        <p v-else-if="scope >= 60">middle</p>
+        <p v-else>bad</p>
+    </div>
+
+    <div>
+        <button v-on:click="count--">-</button>
+        <span>{{ count }}</span>
+        <button @mouseenter="count++">+</button>
+        <button @click="reset">reset</button>
+        <button @click="setFixedValue(5,'this is msg')">5</button>
+    </div>
+
+    <div>
+        <button v-show="imgIndex > 0 " @click="previousPage">previous page</button>
+        <img :src="imgList[imgIndex]">
+        <button v-show="imgIndex < imgList.length - 1" @click="nextPage">next page</button>
+    </div>
+
+    <div>
+        <ul>
+            <li v-for="(item,index) in vforList" :key="item.id">{{ item }}-{{index}}</li>
+        </ul>
+
+        <div>
+            <ul>
+                <li v-for="(item,index) in bookList">
+                    <span>{{item.name}}</span>
+                    <span>{{ item.author }}-{{index}}</span>
+                    <button @click="deleteBook(item.id)">delete</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div>
+        account: <input type="text" v-model="account"><br><br>
+        password: <input type="password" v-model="password"><br><br>
+        <button @click="login">login</button>
+        <button @click="resetLogin">reset</button>
+    </div>
+
+    <section id="note">
+        <!-- 输入框 -->
+        <header class="header">
+            <h1>小黑记事本</h1>
+            <input placeholder="请输入任务" class="new-todo" v-model="todoItem"/>
+            <button class="add" @click="addTodoItem">添加任务</button>
+        </header>
+        <!-- 列表区域 -->
+        <section class="main">
+            <ul class="todo-list">
+                <li class="todo" v-for="(item,index) in todoList" :key="item.id" >
+                    <div class="view">
+                        <span class="index">{{index + 1}}.</span> <label>{{item.name}}</label>
+                        <button class="destroy" @click="delTodoItem(item.id)"></button>
+                    </div>
+                </li>
+            </ul>
+        </section>
+        <!-- 统计和清空 -->
+        <footer class="footer" v-show="todoList.length > 0">
+            <!-- 统计 -->
+            <span class="todo-count">合 计:<strong> {{todoList.length}} </strong></span>
+            <!-- 清空 -->
+            <button class="clear-completed" @click="cleanTodoList">
+                清空任务
+            </button>
+        </footer>
+    </section>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: '#app',
+        data: {
+            isShow: false,
+            link: `
+                       <a href="https://github.com/zss0527">github</a>
+                   `,
+            gender: "female",
+            scope: 65,
+            count: 0,
+            imgAddress: "./imgs/img2.png",
+            altContent: "this is img",
+            imgList: [
+                './imgs/img1.png',
+                './imgs/img2.png',
+                './imgs/img3.png',
+                './imgs/img4.png',
+            ],
+            imgIndex: 0,
+            vforList: [
+                'apple',
+                'banana',
+                'orange'
+            ],
+            bookList: [
+                { id: 1, name: '红楼梦',author: '曹雪芹'},
+                { id: 2, name: '西游记',author: '吴承恩'},
+                { id: 3, name: '水浒传',author: '施耐庵'},
+                { id: 4, name: '三国演义',author: '罗贯中'},
+            ],
+            account: 'Larry',
+            password: '123456',
+
+            todoList: [
+                { id: 1, name: 'run 1 miles' },
+                { id: 2, name: 'eat breakfast' },
+                { id: 3, name: 'learn vue' }
+            ],
+            todoItem: '',
+        },
+        methods: {
+            reset() {
+                console.log("now count is " + this.count + " will reset to 0")
+                this.count = 0
+            },
+
+            setFixedValue(value, msg) {
+                console.log("now count is " + this.count + " will reset to " + value + " msg: " + msg)
+                this.count = value
+            },
+
+            previousPage() {
+                if(this.imgIndex > 0) {
+                    this.imgIndex--
+                } else {
+                    alert("no previous page")
+                }
+            },
+
+            nextPage() {
+                if(this.imgIndex < this.imgList.length - 1) {
+                    this.imgIndex++
+                } else {
+                    alert("no next page")
+                }
+            },
+
+            deleteBook(id) {
+                this.bookList = this.bookList.filter(item => item.id !== id)
+            },
+
+            login() {
+                console.log("account: " + this.account + " password: " + this.password)
+            },
+
+            resetLogin() {
+                this.account = ''
+                this.password = ''
+            },
+
+            delTodoItem(id) {
+                this.todoList = this.todoList.filter(item => item.id !== id)
+            },
+
+            addTodoItem() {
+                if(this.todoItem.trim() === '') {
+                    alert('Please input todo item!')
+                } else {
+                    this.todoList.push({
+                        id: +new Date(),
+                        name: this.todoItem
+                    })
+                    this.todoItem = ''
+                }
+            },
+
+            cleanTodoList() {
+                this.todoList = []
+            },
+        }
+    })
+</script>
+</body>
+</html>
