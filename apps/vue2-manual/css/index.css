@@ -357,3 +357,16 @@ html .clear-completed:active {
     bottom: 10px;
   }
 }
+
+.classBind {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.classRed {
+  font-size: 50px;
+}
+
+.active {
+  background-color: #ffff00;
+  padding: 0 4px;
+}

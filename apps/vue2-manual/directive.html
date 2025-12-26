@@ -68,7 +68,7 @@
         <!-- 输入框 -->
         <header class="header">
             <h1>小黑记事本</h1>
-            <input placeholder="请输入任务" class="new-todo" v-model="todoItem"/>
+            <input placeholder="请输入任务" class="new-todo" v-model.trim="todoItem" @keyup.enter="addTodoItem"/>
             <button class="add" @click="addTodoItem">添加任务</button>
         </header>
         <!-- 列表区域 -->
@@ -92,6 +92,52 @@
             </button>
         </footer>
     </section>
+
+    <div>
+        <span :class="{classBind: true,classRed: false}">bind class test via obj</span></br>
+        <span :class="['classBind','classRed']">bind class test via list</span>
+
+        <div>
+            <ul>
+                <li v-for="(item,index) in vbindList" :key="item.id">
+                    <a :class="{active:indexBind === item.id}" href="#" @mouseenter="indexBind=item.id">{{item.name}}</a>
+                </li>
+            </ul>
+        </div>
+
+        <div :style="{width:'40px',height: '40px', border: 'solid 2px red', backgroundColor: 'pink'}"></div>
+    </div>
+
+    <div>
+        name:
+        <input type="text" v-model="userName">
+        <br><br>
+
+        isSingle:
+        <input type="checkbox" v-model="isSingle">
+        <br><br>
+
+        sex:
+        <input v-model="sex" type="radio" name="gender" value="male"> male
+        <input v-model="sex" type="radio" name="gender" value="female"> female
+        <br><br>
+
+        city:
+        <select v-model="cityId">
+            <option value="01">beijing</option>
+            <option value="02">shanghai</option>
+            <option value="03">guangzhou</option>
+            <option value="04">shenzhen</option>
+        </select>
+        <br><br>
+
+        description:
+        <textarea v-model="desc"></textarea>
+        <br><br>
+
+        <button>register</button>
+        <br><br>
+    </div>
 
 </div>
 
@@ -136,6 +182,21 @@
                 { id: 3, name: 'learn vue' }
             ],
             todoItem: '',
+
+            vbindList: [
+                { id: 1, name: '京东秒杀' },
+                { id: 2, name: '每日特价' },
+                { id: 3, name: '品类秒杀' },
+            ],
+            indexBind: 0,
+
+            userName: '',
+            isSingle: false,
+            sex: '',
+            cityId: '01',
+            desc:'',
+
+
         },
         methods: {
             reset() {
