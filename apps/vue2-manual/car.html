@@ -70,48 +70,48 @@
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 <script>
+    const defaultFruitList = [
+        {
+            id: 1,
+            icon: 'imgs/火龙果.png',
+            isChecked: true,
+            num: 2,
+            price: 6,
+        },
+        {
+            id: 2,
+            icon: 'imgs/荔枝.png',
+            isChecked: false,
+            num: 7,
+            price: 20,
+        },
+        {
+            id: 3,
+            icon: 'imgs/榴莲.png',
+            isChecked: false,
+            num: 3,
+            price: 40,
+        },
+        {
+            id: 4,
+            icon: 'imgs/鸭梨.png',
+            isChecked: true,
+            num: 10,
+            price: 3,
+        },
+        {
+            id: 5,
+            icon: 'imgs/樱桃.png',
+            isChecked: false,
+            num: 20,
+            price: 34,
+        },
+    ]
     const app = new Vue({
         el: '#app',
         data: {
             // 水果列表
-            // fruitList: [
-            //     {
-            //         id: 1,
-            //         icon: 'imgs/火龙果.png',
-            //         isChecked: true,
-            //         num: 2,
-            //         price: 6,
-            //     },
-            //     {
-            //         id: 2,
-            //         icon: 'imgs/荔枝.png',
-            //         isChecked: false,
-            //         num: 7,
-            //         price: 20,
-            //     },
-            //     {
-            //         id: 3,
-            //         icon: 'imgs/榴莲.png',
-            //         isChecked: false,
-            //         num: 3,
-            //         price: 40,
-            //     },
-            //     {
-            //         id: 4,
-            //         icon: 'imgs/鸭梨.png',
-            //         isChecked: true,
-            //         num: 10,
-            //         price: 3,
-            //     },
-            //     {
-            //         id: 5,
-            //         icon: 'imgs/樱桃.png',
-            //         isChecked: false,
-            //         num: 20,
-            //         price: 34,
-            //     },
-            // ],
-            fruitList: JSON.parse(localStorage.getItem('fruitList'))
+            fruitList: JSON.parse(localStorage.getItem('fruitList')) || defaultFruitList,
         },
         methods: {
             deleteItem(id) {
