@@ -8,7 +8,9 @@ export default {
   components: {NoteContent, NoteHeader, NoteFooter},
   data() {
     return {
-      todoList: [],
+      todoList: [
+        { id: 1, name: 'run 1 miles' }
+      ],
     }
   },
   methods: {
@@ -31,7 +33,9 @@ export default {
     }
   },
   created() {
-    this.todoList = JSON.parse(localStorage.getItem('todoList'))
+    if(localStorage.getItem('todoList')) {
+      this.todoList = JSON.parse(localStorage.getItem('todoList'))
+    }
   }
 }
 </script>

@@ -3,15 +3,11 @@ import Bus from "@/utils/EventBus";
 
 export default {
   name: "NoteHeader",
+  inject: ['title','initTodoItem'],
   data() {
     return {
-      title: '小黑记事本',
-      todoList: [
-        { id: 1, name: 'run 1 miles' },
-        { id: 2, name: 'eat breakfast' },
-        { id: 3, name: 'learn vue' }
-      ],
-      todoItem: '',
+      title: this.title,
+      todoItem: ''
     }
   },
   methods: {
@@ -36,7 +32,7 @@ export default {
 <template>
   <header class="header">
     <h1>{{title}}</h1>
-    <input placeholder="请输入任务" class="new-todo" v-model.trim="todoItem" @keyup.enter="addTodoItem"/>
+    <input :placeholder="this.initTodoItem.name" class="new-todo" v-model.trim="todoItem" @keyup.enter="addTodoItem"/>
     <button class="add button" @click="addTodoItem">添加任务</button>
   </header>
 </template>
