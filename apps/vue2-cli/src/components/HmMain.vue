@@ -7,7 +7,10 @@
     <div class="hm-fr">
       <BaseCount :count="24" class="base-count"></BaseCount>
       <BaseCount :count="66" class="base-count"></BaseCount>
-      <BaseCount class="base-count" @updateMsg="modifyMsg($event)"></BaseCount>
+      <div style="display: flex;">
+        <BaseCount ref="lastBaseCount" class="base-count" @updateMsg="modifyMsg($event)"></BaseCount>
+        <button @click="updateDefaultCount" style="height: 40%; margin-top: 10px;">update</button>
+      </div>
     </div>
     <XiaoHeiNote></XiaoHeiNote>
     <div class="v-model">
@@ -66,6 +69,11 @@ export default {
     },
     switchCity() {
       this.selectedCityId = String(Math.floor(Math.random() * 5) + 1)
+    },
+    updateDefaultCount() {
+      // console.log(this.$refs.lastBaseCount)
+      // this.$refs.lastBaseCount.baseCount += 2
+      this.$refs.lastBaseCount.add(-2)
     }
   },
 }

@@ -25,6 +25,9 @@ export default {
     Bus.$on('eventBusMsg',(msg) => {
       this.title=msg
     })
+  },
+  mounted() {
+    this.$refs.inputTodoItem.focus()
   }
 }
 </script>
@@ -32,7 +35,7 @@ export default {
 <template>
   <header class="header">
     <h1>{{title}}</h1>
-    <input :placeholder="this.initTodoItem.name" class="new-todo" v-model.trim="todoItem" @keyup.enter="addTodoItem"/>
+    <input ref="inputTodoItem" :placeholder="this.initTodoItem.name" class="new-todo" v-model.trim="todoItem" @keyup.enter="addTodoItem"/>
     <button class="add button" @click="addTodoItem">添加任务</button>
   </header>
 </template>

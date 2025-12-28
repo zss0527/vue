@@ -19,10 +19,14 @@ export default {
     }
   },
   methods: {
-    add() {
-      this.baseCount++
-      if(this.baseCount >= 103) {
-        this.$emit('updateMsg',this.baseCount)
+    add(step) {
+      if(!step) {
+        this.baseCount++
+        if(this.baseCount >= 103) {
+          this.$emit('updateMsg',this.baseCount)
+        }
+      } else {
+        this.baseCount += step
       }
     }
   }
