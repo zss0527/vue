@@ -70,7 +70,7 @@
 
             <!-- 添加资产 -->
             <form class="my-form">
-                <input id="inputAccountingName" type="text" class="form-control" placeholder="消费名称" v-model.trim="accountingName"/>
+                <input ref="inputAccountingName" id="inputAccountingName" type="text" class="form-control" placeholder="消费名称" v-model.trim="accountingName"/>
                 <input id="inputAccountingPrice" type="text" class="form-control" placeholder="消费价格" v-model.trim.number="accountingPrice"/>
                 <button type="button" class="btn btn-primary" @click="addAccounting">添加账单</button>
             </form>
@@ -101,7 +101,7 @@
         </div>
 
         <!-- 右侧图表 -->
-        <div class="echarts-box" id="main"></div>
+        <div class="echarts-box" id="main" ref="chartMain"></div>
     </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/6.0.0/echarts.min.js"></script>
@@ -209,10 +209,12 @@
             this.getAccountingList()
         },
         mounted() {
-            document.querySelector('#inputAccountingName').focus()
+            // document.querySelector('#inputAccountingName').focus()
+            this.$refs.inputAccountingName.focus()
 
             // Initialize the echarts instance based on the prepared dom
-            this.myChart = echarts.init(document.getElementById('main'));
+            // this.myChart = echarts.init(document.getElementById('main'));
+            this.myChart = echarts.init(this.$refs.chartMain);
 
             // Specify the configuration items and data for the chart
             let option = {
