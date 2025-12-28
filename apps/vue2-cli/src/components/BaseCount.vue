@@ -20,7 +20,8 @@ export default {
   },
   methods: {
     add(step) {
-      if(!step) {
+      console.log(step,typeof step)
+      if(typeof step !== "number") {
         this.baseCount++
         if(this.baseCount >= 103) {
           this.$emit('updateMsg',this.baseCount)
