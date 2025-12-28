@@ -5,11 +5,15 @@
       <button @click="updateProvideData">update provide</button>
     </div>
     <div class="hm-fr">
-      <BaseCount :count="24" class="base-count"></BaseCount>
-      <BaseCount :count="66" class="base-count"></BaseCount>
-      <div style="display: flex;">
+      <BaseCount :count="24" class="base-count firstCount"></BaseCount>
+      <BaseCount  :count="66" class="base-count secondCount"></BaseCount>
+      <div class="thirdCount" style="display: flex;">
         <BaseCount ref="lastBaseCount" class="base-count" @updateMsg="modifyMsg($event)"></BaseCount>
-        <button @click="updateDefaultCount" style="height: 40%; margin-top: 10px;">update</button>
+        <button v-if="!needInputLastCountValue" @click="switchToInput" style="height: 40%; margin-top: 10px;">update count</button>
+        <div v-else style="display: flex; height: 40%; margin-top: 10px;">
+          <input v-model.trim.number="stepValue" ref="inputCount" style="width: 40%;margin-right: 5px"/>
+          <button @click="updateDefaultCount">update</button>
+        </div>
       </div>
     </div>
     <XiaoHeiNote></XiaoHeiNote>
@@ -54,6 +58,8 @@ export default {
       title: '小黑记事本',
       initTodoItem: { id: 1, name: '请输入任务' },
       selectedCityId: '2',
+      needInputLastCountValue: false,
+      stepValue: null,
     }
   },
   methods: {
@@ -70,10 +76,19 @@ export default {
     switchCity() {
       this.selectedCityId = String(Math.floor(Math.random() * 5) + 1)
     },
+    switchToInput() {
+      this.needInputLastCountValue = true
+      //此时直接获取$refs.inputCount得到的是undefined，因为dom是异步更新的，这个dom元素还没有渲染完毕
+      // this.$refs.inputCount.focus()
+      this.$nextTick(() => {
+        this.$refs.inputCount.focus()
+      })
+      // setTimeout(() => {
+      //   this.$refs.inputCount.focus()
+      // },1000)
+    },
     updateDefaultCount() {
-      // console.log(this.$refs.lastBaseCount)
-      // this.$refs.lastBaseCount.baseCount += 2
-      this.$refs.lastBaseCount.add(-2)
+      this.$refs.lastBaseCount.add(this.stepValue)
     }
   },
 }
@@ -87,7 +102,12 @@ scoped原理：
  */
 .hm-fr {
   display: flex;
-  justify-content: center;
+}
+.firstCount, .secondCount {
+  flex: 1;
+}
+.thirdCount {
+  flex: 4;
 }
 .hm-main {
   height: 700px;
@@ -96,7 +116,7 @@ scoped原理：
 
 .base-count {
   height: 40px;
-  margin: 10px 30px;
+  margin: 10px 20px;
 }
 
 span {
