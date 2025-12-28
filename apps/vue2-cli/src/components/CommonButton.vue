@@ -19,7 +19,8 @@ export default {
     handleClick() {
       if (!this.disabled) {
         this.$emit('Click', 'Data from CommonButton');
-        Bus.$emit('eventBusMsg','猪哥记事本')
+        //一般发送方和接收方一对多
+        Bus.$emit('eventBusMsg','Data from EventBus')
       }
     }
   }
