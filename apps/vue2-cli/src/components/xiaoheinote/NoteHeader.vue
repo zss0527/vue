@@ -3,6 +3,9 @@ import Bus from "@/utils/EventBus";
 
 export default {
   name: "NoteHeader",
+  props: {
+    isLoading: Boolean,
+  },
   inject: ['title','initTodoItem'],
   data() {
     return {
@@ -27,7 +30,7 @@ export default {
     })
   },
   mounted() {
-    this.$refs.inputTodoItem.focus()
+    // this.$refs.inputTodoItem.focus()
   }
 }
 </script>
@@ -35,7 +38,7 @@ export default {
 <template>
   <header class="header">
     <h1>{{title}}</h1>
-    <input ref="inputTodoItem" :placeholder="this.initTodoItem.name" class="new-todo" v-model.trim="todoItem" @keyup.enter="addTodoItem"/>
+    <input v-focus="isLoading" ref="inputTodoItem" :placeholder="this.initTodoItem.name" class="new-todo" v-model.trim="todoItem" @keyup.enter="addTodoItem"/>
     <button class="add button" @click="addTodoItem">添加任务</button>
   </header>
 </template>

@@ -28,7 +28,8 @@
 <!--      <VModelComponent :cityId="selectedCityId" @input="updateCityId($event)"></VModelComponent>-->
       <VModelComponent v-model="selectedCityId"></VModelComponent>
       <div style="margin: 0 20px;">{{ selectedCityId }}</div>
-      <button @click="switchCity">切换城市</button>
+      <button style="margin-right: 20px;" @click="switchCity">切换城市</button>
+      <button v-color="color" @click="updateColor">切换颜色</button>
     </div>
 
   </div>
@@ -38,12 +39,16 @@
 import BaseCount from "@/components/BaseCount.vue";
 import XiaoHeiNote from "@/components/xiaoheinote/XiaoHeiNote.vue";
 import VModelComponent from "@/components/VModelComponent.vue";
+import {color} from "@/directives";
 
 export default {
   components: {
     VModelComponent,
     XiaoHeiNote,
     BaseCount
+  },
+  directives: {
+    color
   },
   provide() {
     return {
@@ -60,6 +65,7 @@ export default {
       selectedCityId: '2',
       needInputLastCountValue: false,
       stepValue: null,
+      color: 'blue',
     }
   },
   methods: {
@@ -89,6 +95,9 @@ export default {
     },
     updateDefaultCount() {
       this.$refs.lastBaseCount.add(this.stepValue)
+    },
+    updateColor() {
+      this.color = `#${Math.floor(Math.random() * 0xffffff).toString(16).padStart(6,'0')}`
     }
   },
 }

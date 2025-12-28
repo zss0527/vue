@@ -2,15 +2,18 @@
 import NoteFooter from "@/components/xiaoheinote/NoteFooter.vue";
 import NoteHeader from "@/components/xiaoheinote/NoteHeader.vue";
 import NoteContent from "@/components/xiaoheinote/NoteContent.vue";
+import {loading} from "@/directives";
 
 export default {
   name: "XiaoHeiNote",
   components: {NoteContent, NoteHeader, NoteFooter},
+  directives: {loading},
   data() {
     return {
       todoList: [
-        { id: 1, name: 'run 1 miles' }
+        // { id: 1, name: 'run 1 miles' }
       ],
+      isLoading: true,
     }
   },
   methods: {
@@ -34,15 +37,18 @@ export default {
   },
   created() {
     if(localStorage.getItem('todoList')) {
-      this.todoList = JSON.parse(localStorage.getItem('todoList'))
+      setTimeout(() => {
+        this.isLoading = false
+        this.todoList = JSON.parse(localStorage.getItem('todoList'))
+      },2000)
     }
   }
 }
 </script>
 
 <template>
-  <section id="note">
-    <NoteHeader @addTodoItem="addTodoItem($event)"></NoteHeader>
+  <section id="note" v-loading="isLoading">
+    <NoteHeader :isLoading="isLoading" @addTodoItem="addTodoItem($event)"></NoteHeader>
     <NoteContent :todoList="todoList" @deleteTodoItem="deleteTodoItemById($event)"></NoteContent>
     <NoteFooter :todoList="todoList" @cleanTodoList="cleanTodoList"></NoteFooter>
   </section>

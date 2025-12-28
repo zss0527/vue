@@ -370,3 +370,15 @@ html .clear-completed:active {
   background-color: #ffff00;
   padding: 0 4px;
 }
+
+.loading:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent url('../imgs/loading.gif') no-repeat center / contain;
+  transform: scale(0.7);
+  transform-origin: center;
+}
