@@ -10,15 +10,8 @@ export const color = {
 }
 
 export const focus = {
-    inserted(el, binding) {
-        if(!binding.value) {
-            el.focus()
-        }
-    },
-    update(el, binding) {
-        if(!binding.value) {
-            el.focus()
-        }
+    inserted(el) {
+        el.focus()
     }
 }
 

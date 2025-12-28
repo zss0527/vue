@@ -10,7 +10,7 @@
       <div class="thirdCount" style="display: flex;">
         <BaseCount ref="lastBaseCount" class="base-count" @updateMsg="modifyMsg($event)"></BaseCount>
         <button v-if="!needInputLastCountValue" @click="switchToInput" style="height: 40%; margin-top: 10px;">update count</button>
-        <div v-else style="display: flex; height: 40%; margin-top: 10px;">
+        <div v-else v-focus style="display: flex; height: 40%; margin-top: 10px;">
           <input v-model.trim.number="stepValue" ref="inputCount" style="width: 40%;margin-right: 5px"/>
           <button @click="updateDefaultCount">update</button>
         </div>
