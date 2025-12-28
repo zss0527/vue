@@ -1,0 +1,13 @@
+{
+  "name": "vue-learn",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "dev:admin": "pnpm -F amin-web",
+    "dev:shop": "cd apps/web-shop && pnpm dev",
+    "dev:all": "pnpm -r dev",
+    "dev:install": "pnpm -r install",
+    "clean": "rm -rf node_modules **/node_modules **/dist"
+  }
+}
