@@ -15,7 +15,7 @@ export default {
   },
   methods: {
     addTodoItem(todoItem) {
-      this.todoList.length >= 6 ? alert('Only can add 6 items!') : this.todoList.push(todoItem)
+      this.todoList.length >= 5 ? alert('Only can add 6 items!') : this.todoList.push(todoItem)
     },
     deleteTodoItemById(id) {
       this.todoList = this.todoList.filter(item => item.id !== id)
