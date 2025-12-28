@@ -5,6 +5,8 @@
 </template>
 
 <script>
+import Bus from "@/utils/EventBus";
+
 export default {
   name: 'CommonButton',
   props: {
@@ -16,7 +18,8 @@ export default {
   methods: {
     handleClick() {
       if (!this.disabled) {
-        this.$emit('Click', 'son msg...');
+        this.$emit('Click', 'Data from CommonButton');
+        Bus.$emit('eventBusMsg','猪哥记事本')
       }
     }
   }
