@@ -7,26 +7,29 @@ import View2 from "@/views/ViewSecond.vue";
 Vue.use(Router) // Vue 2 中必须通过 Vue.use 注册插件
 
 export default new Router({
+    mode:"hash",
     routes: [
         {
             path: '/',
-            name: 'ViewFirst',
-            component: ViewFirst
+            redirect: '/view1'
         },
         {
             path: '/view1',
-            name: 'ViewFirst',
             component: ViewFirst
         },
         {
             path: '/view2',
-            name: 'View2',
             component: View2
         },
         {
-            path: '/view3',
-            name: 'View3',
+            path: '/view3/:id?',
             component: View3
+        },
+        {
+            path: '*',
+            component: View2
         }
-    ]
+    ],
+    linkActiveClass: 'link-active',
+    linkExactiveClass: 'link-exact-active',
 })

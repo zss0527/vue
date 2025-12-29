@@ -5,7 +5,10 @@ import HmFooter from "@/components/HmFooter.vue";
 
 export default {
   name: "ViewFirst",
-  components: {HmFooter, HmHeader, HmMain}
+  components: {HmFooter, HmHeader, HmMain},
+  created() {
+     console.log(this.$route.query)
+  }
 }
 </script>
 

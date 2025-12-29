@@ -12,6 +12,11 @@ export default {
         { id: 3, name: '姜肖泰', age: 17 },
       ],
     }
+  },
+  methods: {
+    delItem(id) {
+      this.list = this.list.filter(item => item.id !== id)
+    }
   }
 }
 </script>

@@ -40,9 +40,10 @@ export default {
     }
   },
   methods: {
-    delItem(id) {
-      this.list2 = this.list2.filter(item => item.id !== id)
-    }
+
+  },
+  created() {
+    console.log(this.$route.params)
   }
 }
 </script>
