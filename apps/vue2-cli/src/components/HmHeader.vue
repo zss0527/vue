@@ -1,7 +1,9 @@
 <template>
   <div class="hm-header">
     {{ msg }}
-    <CommonButton :disabled="false" @Click="getParam($event)">common button</CommonButton>
+    <CommonButton :disabled="false" @Click="getParam($event)">
+      <template v-slot:type>header </template>
+    </CommonButton>
   </div>
 
 </template>

@@ -1,6 +1,9 @@
 <template>
   <button :class="['common-button', { 'is-disabled': disabled }]" @click="handleClick">
-    <slot></slot>
+<!--    <slot>Default Button</slot>-->
+<!--    具名插槽，在使用的地方通过 <template v-slot:name>content</template>>的方式分发内容 -->
+    <slot name="type">common</slot>
+    <slot name="name"> button</slot>
   </button>
 </template>
 

@@ -1,7 +1,10 @@
 <template>
   <div class="hm-footer">
     {{ msg }}
-    <CommonButton :disabled="true">common button</CommonButton>
+    <CommonButton :disabled="true">
+      <template v-slot:type>footer</template>
+      <template #name> disabled button</template>
+    </CommonButton>
   </div>
 </template>
 
