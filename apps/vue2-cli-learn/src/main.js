@@ -7,6 +7,7 @@ import router from "@/router";
 import store from "@/store";
 
 console.log(123333)
+Vue.config.devtools = true;
 Vue.config.productionTip = false
 
 //全局注册组件

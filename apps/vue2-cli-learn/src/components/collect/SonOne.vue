@@ -9,24 +9,26 @@ export default {
     }
   },
   computed: {
-    ...mapState(['count','title','list']),
-    ...mapGetters(['filterList']),
+    ...mapState('vuexLearn',['count','title','list']),
+    ...mapGetters('vuexLearn',['filterList']),
   },
   methods: {
     // handleAdd(step) {
     //   // this.$store.state.count++
     //   this.$store.commit('increment',step)
     // }
-    ...mapMutations(['increment','setList']),
+    ...mapMutations('vuexLearn',['increment','setList']),
     // asyncHandleCount(step) {
     //   this.$store.dispatch('setAsyncCount',step)
     // }
-    ...mapActions(['setAsyncCount']),
+    ...mapActions('vuexLearn',['setAsyncCount']),
   },
   updated() {
-    // console.log(this.$store.state.count)
-    console.log(this.list)
-    console.log(this.$store.getters.filterList)
+    // console.log(this.$store.state.vuexLearn.count)
+    // console.log(this.list)
+    // console.log('filterList: ',this.$store.getters['vuexLearn/filterList'])
+    // this.$store.commit('vuexLearn/setCount',5)
+    // this.$store.dispatch('vuexLearn/setAsyncCount',10)
   }
 }
 </script>

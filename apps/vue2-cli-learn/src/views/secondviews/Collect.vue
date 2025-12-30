@@ -37,13 +37,13 @@ export default {
     // handleCount(count) {
     //   this.$store.commit('setCount',+count)
     // },
-    ...mapMutations(['changeTitle','setCount','setList'])
+    ...mapMutations('vuexLearn',['changeTitle','setCount','setList'])
   },
   computed: {
-    ...mapState(['title','count','list'])
+    ...mapState('vuexLearn',['title','count','list'])
   },
   created() {
-    // console.log(this.$store)
+    // console.log('store.state: ',this.$store.state.vuexLearn.list)
   }
 }
 </script>

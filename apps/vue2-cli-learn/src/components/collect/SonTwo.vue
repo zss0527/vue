@@ -4,10 +4,10 @@ import { mapState, mapMutations } from 'vuex'
 export default {
   name: "SonTwo",
   computed: {
-    ...mapState(['count','title']),
+    ...mapState('vuexLearn',['count','title']),
   },
   methods: {
-    ...mapMutations(['increment'])
+    ...mapMutations('vuexLearn',['increment'])
   }
 }
 </script>
