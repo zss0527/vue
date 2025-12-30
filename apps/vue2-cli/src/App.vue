@@ -15,6 +15,8 @@
       对应页面通过this.$route.params.id来获取传过来的参数值
       -->
       <router-link to="/view3/4573" class="item item3">view-three</router-link>
+
+      <div class="item item4" @click="navigate">编程式导航</div>
     </div>
     <router-view></router-view>
   </div>
@@ -24,6 +26,21 @@
 
 export default {
   name: 'App',
+  methods: {
+    navigate() {
+      /* 编程式导航：
+        通过path：this.$router.push(path) 或者 this.$router.push({path:'path',query: {k:v})
+        通过name：this.$router.push({name:'routerName',query:{k:v})
+      */
+      this.$router.push({
+        path:'/view3/2456',
+        query: {
+          k1: 'v1',
+          k2: 'v2'
+        }
+      })
+    }
+  },
   beforeCreate() {
     console.log('beforeCreate in App component')
   },
@@ -39,7 +56,7 @@ export default {
 
 .item {
   display: block;
-  width: 212px;
+  width: 100%;
   line-height: 30px;
   text-decoration: none;
   background-color: #333;

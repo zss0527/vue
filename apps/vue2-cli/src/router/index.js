@@ -22,6 +22,7 @@ export default new Router({
             component: View2
         },
         {
+            name: 'view3',
             path: '/view3/:id?',
             component: View3
         },
