@@ -1,6 +1,10 @@
 <template>
   <div id="collect">
-    <MyTag style="font-size:20px;font-weight: bold;" :value="`${title} - ${count}`" @input="handleTitle"></MyTag>
+    <div style="display: flex;justify-content: space-between">
+      <MyTag style="font-size:20px;font-weight: bold;" :value="`${title} - ${count}`" @input="handleTitle"></MyTag>
+      <MyTag style="font-size:20px;font-weight: bold;" :value="list" @input="setList"></MyTag>
+    </div>
+
 <!--    <h1>{{ title }}</h1>-->
 <!--    <input type="text" :value="count" @input="handleCount($event.target.value)">-->
     <input type="text" :value="count" @input="setCount(+$event.target.value)">
@@ -33,10 +37,10 @@ export default {
     // handleCount(count) {
     //   this.$store.commit('setCount',+count)
     // },
-    ...mapMutations(['changeTitle','setCount'])
+    ...mapMutations(['changeTitle','setCount','setList'])
   },
   computed: {
-    ...mapState(['title','count'])
+    ...mapState(['title','count','list'])
   },
   created() {
     // console.log(this.$store)

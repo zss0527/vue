@@ -2,7 +2,7 @@
 export default {
   name: "MyTag",
   props: {
-    value: String,
+    value: [String,Array],
   },
   data() {
     return {
