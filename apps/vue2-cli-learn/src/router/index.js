@@ -8,7 +8,7 @@ import ArticleDetail from "@/views/ArticleDetail.vue";
 // import Article from "@/views/Article.vue";
 // import Collect from "@/views/Collect.vue";
 // import Like from "@/views/Like.vue";
-// import User from "@/views/User.vue";
+// import User from "@/views/Cart.vue";
 import mobile from "@/router/mobile";
 
 // install Router plugin

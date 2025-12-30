@@ -16,7 +16,7 @@ export default [
         component: () => import('../views/secondviews/Like.vue'),
     },
     {
-        path: 'user',
-        component: () => import('../views/secondviews/User.vue'),
+        path: 'cart',
+        component: () => import('../views/secondviews/Cart.vue'),
     },
 ]
