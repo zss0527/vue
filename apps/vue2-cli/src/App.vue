@@ -16,9 +16,23 @@
       -->
       <router-link to="/view3/4573" class="item item3">view-three</router-link>
 
-      <div class="item item4" @click="navigate">编程式导航</div>
+<!--      <div class="item item4" @click="navigate">编程式导航</div>-->
+      <router-link to="/mobile" class="item item4">移动端</router-link>
+      <router-link to="/detail" class="item item5">detail</router-link>
     </div>
-    <router-view></router-view>
+    <!--
+      keep-alive三个参数：
+        include：组件名数组(没有配置name的话以组件对应的文件名)，将被缓存的组件
+        exclude：组件名数组，排除的组件
+        max：最大缓存的组件的个数
+
+      被include的组件会多出两个生命周期函数，且原有的created，mounted等不会触发，应该在一下两个新的生命周期里完成需要的逻辑：
+        activated：组件被看到时触发
+        deactivated：离开页面时触发
+    -->
+    <keep-alive :include="['MobileLayoutPage']" max="3">
+      <router-view></router-view>
+    </keep-alive>
   </div>
 </template>
 
@@ -32,8 +46,20 @@ export default {
         通过path：this.$router.push(path) 或者 this.$router.push({path:'path',query: {k:v})
         通过name：this.$router.push({name:'routerName',query:{k:v})
       */
+      /*
       this.$router.push({
         path:'/view3/2456',
+        query: {
+          k1: 'v1',
+          k2: 'v2'
+        }
+      })
+      */
+      this.$router.push({
+        name:'view3',
+        params: {
+          id: '12345'
+        },
         query: {
           k1: 'v1',
           k2: 'v2'
