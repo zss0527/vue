@@ -9,9 +9,9 @@
 <!--      <a href="#/layout/like">喜欢</a>-->
 <!--      <a href="#/layout/user">我的</a>-->
       <router-link to="article">面经</router-link>
-      <router-link to="collect">收藏</router-link>
+      <router-link to="collect">vuex学习</router-link>
       <router-link to="like">喜欢</router-link>
-      <router-link to="user">我的</router-link>
+      <router-link to="user">购物车</router-link>
     </nav>
   </div>
 </template>

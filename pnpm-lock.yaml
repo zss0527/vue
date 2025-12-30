@@ -8,52 +8,6 @@ importers:
 
   .: {}
 
-  apps/vue2-cli:
-    dependencies:
-      axios:
-        specifier: ^1.13.2
-        version: 1.13.2
-      core-js:
-        specifier: ^3.8.3
-        version: 3.47.0
-      vue:
-        specifier: ^2.6.14
-        version: 2.7.16
-      vue-router:
-        specifier: ^3.6.5
-        version: 3.6.5(vue@2.7.16)
-    devDependencies:
-      '@babel/core':
-        specifier: ^7.12.16
-        version: 7.28.5
-      '@babel/eslint-parser':
-        specifier: ^7.12.16
-        version: 7.28.5(@babel/core@7.28.5)(eslint@7.32.0)
-      '@vue/cli-plugin-babel':
-        specifier: ~5.0.0
-        version: 5.0.9(@vue/cli-service@5.0.9(@vue/compiler-sfc@3.5.26)(less-loader@12.3.0(less@4.5.1)(webpack@5.104.1))(lodash@4.17.21)(vue-template-compiler@2.7.16)(vue@2.7.16)(webpack-sources@3.3.3))(core-js@3.47.0)(vue@2.7.16)
-      '@vue/cli-plugin-eslint':
-        specifier: ~5.0.0
-        version: 5.0.9(@vue/cli-service@5.0.9(@vue/compiler-sfc@3.5.26)(less-loader@12.3.0(less@4.5.1)(webpack@5.104.1))(lodash@4.17.21)(vue-template-compiler@2.7.16)(vue@2.7.16)(webpack-sources@3.3.3))(eslint@7.32.0)
-      '@vue/cli-service':
-        specifier: ~5.0.0
-        version: 5.0.9(@vue/compiler-sfc@3.5.26)(less-loader@12.3.0(less@4.5.1)(webpack@5.104.1))(lodash@4.17.21)(vue-template-compiler@2.7.16)(vue@2.7.16)(webpack-sources@3.3.3)
-      eslint:
-        specifier: ^7.32.0
-        version: 7.32.0
-      eslint-plugin-vue:
-        specifier: ^8.0.3
-        version: 8.7.1(eslint@7.32.0)
-      less:
-        specifier: ^4.5.1
-        version: 4.5.1
-      less-loader:
-        specifier: ^12.3.0
-        version: 12.3.0(less@4.5.1)(webpack@5.104.1)
-      vue-template-compiler:
-        specifier: ^2.6.14
-        version: 2.7.16
-
   apps/vue2-cli-Xtx-static:
     dependencies:
       core-js:
@@ -84,6 +38,55 @@ importers:
       eslint-plugin-vue:
         specifier: ^8.0.3
         version: 8.7.1(eslint@7.32.0)
+      vue-template-compiler:
+        specifier: ^2.6.14
+        version: 2.7.16
+
+  apps/vue2-cli-learn:
+    dependencies:
+      axios:
+        specifier: ^1.13.2
+        version: 1.13.2
+      core-js:
+        specifier: ^3.8.3
+        version: 3.47.0
+      vue:
+        specifier: ^2.6.14
+        version: 2.7.16
+      vue-router:
+        specifier: ^3.6.5
+        version: 3.6.5(vue@2.7.16)
+      vuex:
+        specifier: ^3.6.2
+        version: 3.6.2(vue@2.7.16)
+    devDependencies:
+      '@babel/core':
+        specifier: ^7.12.16
+        version: 7.28.5
+      '@babel/eslint-parser':
+        specifier: ^7.12.16
+        version: 7.28.5(@babel/core@7.28.5)(eslint@7.32.0)
+      '@vue/cli-plugin-babel':
+        specifier: ~5.0.0
+        version: 5.0.9(@vue/cli-service@5.0.9(@vue/compiler-sfc@3.5.26)(less-loader@12.3.0(less@4.5.1)(webpack@5.104.1))(lodash@4.17.21)(vue-template-compiler@2.7.16)(vue@2.7.16)(webpack-sources@3.3.3))(core-js@3.47.0)(vue@2.7.16)
+      '@vue/cli-plugin-eslint':
+        specifier: ~5.0.0
+        version: 5.0.9(@vue/cli-service@5.0.9(@vue/compiler-sfc@3.5.26)(less-loader@12.3.0(less@4.5.1)(webpack@5.104.1))(lodash@4.17.21)(vue-template-compiler@2.7.16)(vue@2.7.16)(webpack-sources@3.3.3))(eslint@7.32.0)
+      '@vue/cli-service':
+        specifier: ~5.0.0
+        version: 5.0.9(@vue/compiler-sfc@3.5.26)(less-loader@12.3.0(less@4.5.1)(webpack@5.104.1))(lodash@4.17.21)(vue-template-compiler@2.7.16)(vue@2.7.16)(webpack-sources@3.3.3)
+      eslint:
+        specifier: ^7.32.0
+        version: 7.32.0
+      eslint-plugin-vue:
+        specifier: ^8.0.3
+        version: 8.7.1(eslint@7.32.0)
+      less:
+        specifier: ^4.5.1
+        version: 4.5.1
+      less-loader:
+        specifier: ^12.3.0
+        version: 12.3.0(less@4.5.1)(webpack@5.104.1)
       vue-template-compiler:
         specifier: ^2.6.14
         version: 2.7.16
@@ -3725,6 +3728,11 @@ packages:
   vue@2.7.16:
     resolution: {integrity: sha512-4gCtFXaAA3zYZdTp5s4Hl2sozuySsgz4jy1EnpBHNfpMa9dK1ZCG7viqBPCwXtmgc8nHqUsAu3G4gtmXkkY3Sw==}
     deprecated: Vue 2 has reached EOL and is no longer actively maintained. See https://v2.vuejs.org/eol/ for more details.
+
+  vuex@3.6.2:
+    resolution: {integrity: sha512-ETW44IqCgBpVomy520DT5jf8n0zoCac+sxWnn+hMe/CzaSejb/eVw2YToiXYX+Ex/AuHHia28vWTq4goAexFbw==}
+    peerDependencies:
+      vue: ^2.0.0
 
   watchpack@2.5.0:
     resolution: {integrity: sha512-e6vZvY6xboSwLz2GD36c16+O/2Z6fKvIf4pOXptw2rY9MVwE/TXc6RGqxD3I3x0a28lwBY7DE+76uTPSsBrrCA==}
@@ -8145,6 +8153,10 @@ snapshots:
     dependencies:
       '@vue/compiler-sfc': 2.7.16
       csstype: 3.2.3
+
+  vuex@3.6.2(vue@2.7.16):
+    dependencies:
+      vue: 2.7.16
 
   watchpack@2.5.0:
     dependencies:

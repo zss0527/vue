@@ -11,6 +11,7 @@ import ArticleDetail from "@/views/ArticleDetail.vue";
 // import User from "@/views/User.vue";
 import mobile from "@/router/mobile";
 
+// install Router plugin
 Vue.use(Router) // Vue 2 中必须通过 Vue.use 注册插件
 
 export default new Router({

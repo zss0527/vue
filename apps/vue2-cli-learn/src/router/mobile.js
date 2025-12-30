@@ -5,18 +5,18 @@ export default [
     },
     {
         path: 'article/:id?',
-        component: () => import('../views/Article.vue'),
+        component: () => import('../views/secondviews/Article.vue'),
     },
     {
         path: 'collect',
-        component: () => import('../views/Collect.vue'),
+        component: () => import('../views/secondviews/Collect.vue'),
     },
     {
         path: 'like',
-        component: () => import('../views/Like.vue'),
+        component: () => import('../views/secondviews/Like.vue'),
     },
     {
         path: 'user',
-        component: () => import('../views/User.vue'),
+        component: () => import('../views/secondviews/User.vue'),
     },
 ]

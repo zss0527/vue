@@ -4,6 +4,7 @@ import './assets/styles/index.css'
 import CommonButton from "@/components/CommonButton.vue";
 import {focus} from "@/directives";
 import router from "@/router";
+import store from "@/store";
 
 console.log(123333)
 Vue.config.productionTip = false
@@ -34,10 +35,21 @@ Vue.directive('focus',focus)
     })
 */
 
+/* Vue2中Vuex使用步骤
+1. pnpm add vuex@3
+2. 创建store
+  2.1 import Vuex from 'vuex'
+  2.2 安装注册 Vue.use(Vuex)
+  2.3 创建Vuex.Store()实例
+
+3. 将store对象注入到Vue实例中
+ */
+
 //创建Vue实例并绑定容器
 new Vue({
   // el: '#app',
   router,
+  store,
   render: h => h(App),
 
 }).$mount('#app')
