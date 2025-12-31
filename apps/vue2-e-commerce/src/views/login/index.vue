@@ -57,9 +57,10 @@ export default {
       if (!this.verifyFn()) {
         return
       }
-      await codeLogin(this.phoneNumber, this.smsCode)
+      const res = await codeLogin(this.phoneNumber, this.smsCode)
+      this.$store.commit('user/setUserAuthInfo', res.data)
       this.$toast.success('登录成功')
-      this.$router.push('/home')
+      this.$router.push('/')
     }
   },
   created () {
