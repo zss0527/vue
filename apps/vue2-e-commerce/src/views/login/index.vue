@@ -1,6 +1,6 @@
 <script>
 
-import { getMsgCode, getPicCode } from '@/api/login'
+import { codeLogin, getMsgCode, getPicCode } from '@/api/login'
 
 export default {
   name: 'LoginIndex',
@@ -12,6 +12,7 @@ export default {
       picUrl: '', // 验证码的base64码
       totalSecond: 60,
       second: 60,
+      smsCode: '', // 用户输入的短信验证码
       timer: null // 定时器id
     }
   },
@@ -53,8 +54,13 @@ export default {
       }
       return true
     },
-    login () {
-      this.$toast.fail('请输入正确的手机号码')
+    async login () {
+      if (!this.verifyFn()) {
+        return
+      }
+      console.log('request: ', this.phoneNumber, ' ', this.smsCode)
+      const res = await codeLogin(this.phoneNumber, this.smsCode)
+      console.log('login res: ', res)
     }
   },
   created () {
@@ -88,7 +94,7 @@ export default {
           <img v-if="picUrl" :src="picUrl" alt="" @click="getPicCode" />
         </div>
         <div class="form-item">
-          <input class="inp" placeholder="请输入短信验证码" type="text">
+          <input v-model.trim.number="smsCode" class="inp" placeholder="请输入短信验证码" type="text">
           <button @click="getMessageCode">
             {{ second === totalSecond ? '获取验证码' : second+'秒后重新发送'}}
           </button>

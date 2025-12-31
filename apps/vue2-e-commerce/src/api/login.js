@@ -15,3 +15,18 @@ export const getMsgCode = (captchaCode, captchaKey, mobile) => {
     }
   })
 }
+
+export const codeLogin = (mobile, smsCode) => {
+  return request.post('/passport/login', {
+    form: {
+      smsCode,
+      mobile,
+      isParty: false,
+      partyData: {}
+    }
+  }, {
+    headers: {
+      platform: 'H5'
+    }
+  })
+}
