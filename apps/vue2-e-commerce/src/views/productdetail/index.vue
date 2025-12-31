@@ -5,7 +5,7 @@ export default {
 </script>
 
 <template>
-  <div>prod detail</div>
+  <div>prod detail {{ $route.params.id }}</div>
 </template>
 
 <style scoped>
