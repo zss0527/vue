@@ -8,7 +8,11 @@ export default {
     return {
       picCode: '', // 用户输入的图形验证码
       picKey: '', // 图形验证码的唯一标识
-      picUrl: '' // 验证码的base64码
+      picUrl: '', // 验证码的base64码
+      phoneNumber: null, // 用户输入的手机号码
+      totalSecond: 60,
+      second: 60,
+      timer: null // 定时器id
     }
   },
   methods: {
@@ -16,10 +20,30 @@ export default {
       const { data: { base64, key } } = await getPicCode()
       this.picUrl = base64
       this.picKey = key
+    },
+    getMessageCode () {
+      // 当前没有定时器，且totalSecond和second相同时才开启新的定时器
+      if (!this.timer && this.totalSecond === this.second) {
+        this.timer = setInterval(() => {
+          console.log('正在倒计时。。。。')
+          this.second--
+          if (this.second <= 0) {
+            clearInterval(this.timer)
+            this.timer = null
+            this.second = this.totalSecond
+          }
+        }, 1000)
+      }
+    },
+    login () {
+      this.$toast.fail('请输入正确的手机号码')
     }
   },
   created () {
     this.getPicCode()
+  },
+  destroyed () {
+    clearInterval(this.timer)
   }
 }
 </script>
@@ -47,11 +71,13 @@ export default {
         </div>
         <div class="form-item">
           <input class="inp" placeholder="请输入短信验证码" type="text">
-          <button>获取验证码</button>
+          <button @click="getMessageCode">
+            {{ second === totalSecond ? '获取验证码' : second+'秒后重新发送'}}
+          </button>
         </div>
       </div>
 
-      <div class="login-btn">登录</div>
+      <div @click="login" class="login-btn">登录</div>
     </div>
   </div>
 </template>
