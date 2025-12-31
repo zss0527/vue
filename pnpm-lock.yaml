@@ -93,6 +93,9 @@ importers:
 
   apps/vue2-e-commerce:
     dependencies:
+      axios:
+        specifier: ^1.13.2
+        version: 1.13.2
       core-js:
         specifier: ^3.8.3
         version: 3.47.0
