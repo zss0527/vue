@@ -29,8 +29,7 @@ export default {
       // 当前没有定时器，且totalSecond和second相同时才开启新的定时器
       if (!this.timer && this.totalSecond === this.second) {
         // 先发送请求再倒计时
-        const res = await getMsgCode(this.picCode, this.picKey, this.phoneNumber)
-        console.log('msgCode: ', res)
+        await getMsgCode(this.picCode, this.picKey, this.phoneNumber)
         this.timer = setInterval(() => {
           this.second--
           if (this.second <= 0) {
@@ -58,9 +57,9 @@ export default {
       if (!this.verifyFn()) {
         return
       }
-      console.log('request: ', this.phoneNumber, ' ', this.smsCode)
-      const res = await codeLogin(this.phoneNumber, this.smsCode)
-      console.log('login res: ', res)
+      await codeLogin(this.phoneNumber, this.smsCode)
+      this.$toast.success('登录成功')
+      this.$router.push('/home')
     }
   },
   created () {
