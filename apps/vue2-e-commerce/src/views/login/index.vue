@@ -1,6 +1,6 @@
 <script>
 
-import request from '@/utils/request'
+import { getPicCode } from '@/api/login'
 
 export default {
   name: 'LoginIndex',
@@ -13,7 +13,7 @@ export default {
   },
   methods: {
     async getPicCode () {
-      const { data: { base64, key } } = await request.get('/captcha/image')
+      const { data: { base64, key } } = await getPicCode()
       this.picUrl = base64
       this.picKey = key
     }
