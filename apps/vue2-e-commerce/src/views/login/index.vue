@@ -1,15 +1,15 @@
 <script>
 
-import { getPicCode } from '@/api/login'
+import { getMsgCode, getPicCode } from '@/api/login'
 
 export default {
   name: 'LoginIndex',
   data () {
     return {
+      phoneNumber: null, // 用户输入的手机号码
       picCode: '', // 用户输入的图形验证码
       picKey: '', // 图形验证码的唯一标识
       picUrl: '', // 验证码的base64码
-      phoneNumber: null, // 用户输入的手机号码
       totalSecond: 60,
       second: 60,
       timer: null // 定时器id
@@ -21,11 +21,16 @@ export default {
       this.picUrl = base64
       this.picKey = key
     },
-    getMessageCode () {
+    async getMessageCode () {
+      if (!this.verifyFn()) {
+        return
+      }
       // 当前没有定时器，且totalSecond和second相同时才开启新的定时器
       if (!this.timer && this.totalSecond === this.second) {
+        // 先发送请求再倒计时
+        const res = await getMsgCode(this.picCode, this.picKey, this.phoneNumber)
+        console.log('msgCode: ', res)
         this.timer = setInterval(() => {
-          console.log('正在倒计时。。。。')
           this.second--
           if (this.second <= 0) {
             clearInterval(this.timer)
@@ -33,7 +38,20 @@ export default {
             this.second = this.totalSecond
           }
         }, 1000)
+        this.$toast('短信发送成功，请注意查收')
       }
+    },
+    // 校验手机号和图形验证码格式
+    verifyFn () {
+      if (!/^1[3-9]\d{9}$/.test(this.phoneNumber)) {
+        this.$toast('请输入正确的手机号')
+        return false
+      }
+      if (!/^\w{4}$/.test(this.picCode)) {
+        this.$toast('请输入正确格式的图形验证码')
+        return false
+      }
+      return true
     },
     login () {
       this.$toast.fail('请输入正确的手机号码')
@@ -63,7 +81,7 @@ export default {
 
       <div class="form">
         <div class="form-item">
-          <input class="inp" maxlength="11" placeholder="请输入手机号码" type="text">
+          <input v-model="phoneNumber" class="inp" maxlength="11" placeholder="请输入手机号码" type="text">
         </div>
         <div class="form-item">
           <input v-model="picCode" class="inp" maxlength="5" placeholder="请输入图形验证码" type="text">
