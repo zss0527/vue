@@ -1,3 +1,9 @@
+<!--
+计算属性依赖的值发生改变时计算属性的计算逻辑全局只会执行一次，方法中依赖的值发生变化时该方法有几次调用就执行几次；
+所以计算属性的本质就是相对于方法调用只计算一次，适合复杂计算且多次使用的场景；
+语法和data中定义变量一样，不需要data中定义一个对应的变量；
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,6 +44,7 @@
     </table>
 
     <!-- 目标：统计求和，求得礼物总数 -->
+    <!-- 计算属性依赖的值发生改变时计算属性的计算逻辑全局只会执行一次，方法中依赖的值发生变化时该方法有几次调用就执行几次 -->
     <p>礼物总数：{{totalCount}} 个</p>
     <p>礼物总数：{{totalCount}} 个</p>
     <p>礼物总数：{{totalCountFn()}} 个</p>
@@ -179,6 +186,9 @@
             fullName: function () {
                 return this.firstName + this.lastName
             },
+            /**
+             * 默认计算属性的set没法自定义逻辑，自定义get或者set逻辑时需要完整写法
+             */
             fullNameComplete: {
                 get() {
                     return this.firstName + this.lastName

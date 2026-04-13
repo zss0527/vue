@@ -182,7 +182,11 @@
                 this.accountingName = ''
                 this.accountingPrice = null
                 this.getAccountingList(data)
-
+                this.myChart.setOption({
+                    series: {
+                        data: this.accountingList.map(item => ({name: item.name,value: item.price}))
+                    }
+                })
             },
 
             getAccountingList(data) {

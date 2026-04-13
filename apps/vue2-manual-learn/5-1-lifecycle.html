@@ -143,6 +143,7 @@
         beforeCreate() {
             console.log('beforeCreate: before reactive data was initialized',this.count)
         },
+        //常用来发送请求获取初始化数据
         async created() {
             console.log('created: after reactive data was initialized',this.count)
             //can start to operate data
@@ -153,6 +154,7 @@
         beforeMount() {
             console.log('beforeMount: before dom was rendered',document.querySelector('h3').innerHTML)
         },
+        //常用来操作dom
         mounted() {
             console.log('mounted: after dom was rendered',document.querySelector('h3').innerHTML)
             //can start to operate dom
@@ -165,6 +167,7 @@
         updated() {
             console.log('updated: data and template were updated:', this.count,document.querySelector('span').innerHTML)
         },
+        //常用来销毁定时器等
         beforeDestroy() {
             console.log('beforeDestroy')
         },

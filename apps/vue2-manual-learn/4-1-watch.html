@@ -1,3 +1,8 @@
+<!--
+watch的本质就是监视某个变量变化时触发一些逻辑；
+语法为data里先定义要监视的变量，在watch对象里再声明要监视data中具体哪个变量名；
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -142,8 +147,8 @@
              */
             //watch完整写法
             obj: {
-                deep: true,
-                immediate: true,
+                deep: true,  //是否对复杂类型进行监视
+                immediate: true,  //是否初始化时就立即执行一次
                 handler(newValue) {
                     clearTimeout(this.timer)
                     this.timer = setTimeout(async () => {
