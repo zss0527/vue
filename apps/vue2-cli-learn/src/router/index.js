@@ -11,11 +11,15 @@ import ArticleDetail from "@/views/ArticleDetail.vue";
 // import User from "@/views/Cart.vue";
 import mobile from "@/router/mobile";
 
-// install Router plugin
+/**
+ * install Router plugin,给Vue类安装插件，之后new Vue出来的实例将拥有这些插件
+ * 类似的还有Vue.component(),Vue.directive()
+ */
+
 Vue.use(Router) // Vue 2 中必须通过 Vue.use 注册插件
 
 export default new Router({
-    mode:"hash",
+    mode:"hash", //hash or history
     routes: [
         {
             path: '/',
@@ -30,7 +34,7 @@ export default new Router({
             component: View2
         },
         {
-            name: 'view3',
+            name: 'view3', //使用name一般用于深层路由或者路径比较长的情况
             path: '/view3/:id?',
             component: View3
         },

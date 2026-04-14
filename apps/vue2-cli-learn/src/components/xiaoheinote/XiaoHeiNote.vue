@@ -4,6 +4,9 @@ import NoteHeader from "@/components/xiaoheinote/NoteHeader.vue";
 import NoteContent from "@/components/xiaoheinote/NoteContent.vue";
 import {loading} from "@/directives";
 
+/**
+ * 共用的数据应该放在公共的地方，即父组件中
+ */
 export default {
   name: "XiaoHeiNote",
   components: {NoteContent, NoteHeader, NoteFooter},

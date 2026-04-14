@@ -6,6 +6,10 @@ export default {
   props: {
     isLoading: Boolean,
   },
+  /*
+  通过props或者inject接收到的变量，子组件可以通过this.变量名来使用
+  优先级data>props>inject，优先级高的没有值会依次往下一优先级的找
+   */
   inject: ['title','initTodoItem'],
   data() {
     return {

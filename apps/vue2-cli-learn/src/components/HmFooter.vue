@@ -3,7 +3,7 @@
     {{ msg }}
     <CommonButton :disabled="true">
       <template v-slot:type>footer</template>
-      <template #name> disabled button</template>
+      <template #name111> disabled button</template>
     </CommonButton>
   </div>
 </template>

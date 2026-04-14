@@ -11,6 +11,9 @@
         <BaseCount ref="lastBaseCount" class="base-count" @updateMsg="modifyMsg($event)"></BaseCount>
         <button v-if="!needInputLastCountValue" @click="switchToInput" style="height: 40%; margin-top: 10px;">update count</button>
         <div v-else v-focus style="display: flex; height: 40%; margin-top: 10px;">
+          <!-- ref用在dom元素上，之后可以通过$refs.refName.xxx来访问这个dom；
+               ref用在组件上，之后可以通过$refs.refName.xxx来访问这个组件的属性或者方法；
+          -->
           <input v-model.trim.number="stepValue" ref="inputCount" style="width: 40%;margin-right: 5px"/>
           <button @click="updateDefaultCount">update</button>
         </div>
@@ -19,14 +22,15 @@
     <XiaoHeiNote></XiaoHeiNote>
     <div class="v-model">
       <!--  要想自定义组件使用v-model实现双向绑定，那么这个组件必须props接收value变量并且发送input事件
-       如果想更改默认的这个value和input名可以选择使用.sync
+       如果想更改默认的这个value和input名可以选择使用.sync（只要求绑定input属性，但output事件名必须是'update:prop-name'
        -->
       <!--  .sync用法
       <VModelComponent :cityId.sync="selectedCityId"></VModelComponent>
-      在子组件中用props cityId接收，emit的事件名字可以是任意的eventName:cityId,例如this.$emit('updateCityId:cityId','4')
+      在子组件中用props cityId接收，emit的事件名字必须是update:cityId,例如this.$emit('update:cityId','4')
       -->
 <!--      <VModelComponent :cityId="selectedCityId" @input="updateCityId($event)"></VModelComponent>-->
-      <VModelComponent v-model="selectedCityId"></VModelComponent>
+<!--      <VModelComponent v-model="selectedCityId"></VModelComponent>-->
+      <VModelComponent :myValue.sync="selectedCityId"></VModelComponent>
       <div style="margin: 0 20px;">{{ selectedCityId }}</div>
       <button style="margin-right: 20px;" @click="switchCity">切换城市</button>
       <button v-color="color" @click="updateColor">切换颜色</button>
@@ -36,7 +40,7 @@
 </template>
 
 <script>
-import BaseCount from "@/components/BaseCount.vue";
+import BaseCount from "@/components/common/BaseCount.vue";
 import XiaoHeiNote from "@/components/xiaoheinote/XiaoHeiNote.vue";
 import VModelComponent from "@/components/VModelComponent.vue";
 import {color} from "@/directives";
@@ -50,6 +54,9 @@ export default {
   directives: {
     color
   },
+  /*
+  跨代传值例如父到孙，除了传统的每一层用props间接传递，更简单直接的方式是provide和inject语法
+   */
   provide() {
     return {
       //简单类型传的是值，复杂类型是引用
@@ -86,6 +93,7 @@ export default {
       this.needInputLastCountValue = true
       //此时直接获取$refs.inputCount得到的是undefined，因为dom是异步更新的，这个dom元素还没有渲染完毕
       // this.$refs.inputCount.focus()
+      // this.$nextTick()会在dom准备完毕后再执行
       this.$nextTick(() => {
         this.$refs.inputCount.focus()
       })

@@ -4,7 +4,7 @@
 <!--      <a href="#/view1" class="item1">view-one</a>-->
 <!--      <a href="#/view2" class="item2">view-two</a>-->
 <!--      <a href="#/view3" class="item3">view-three</a>-->
-      <!--
+      <!-- 声明式导航
       1.查询参数传参：/path?key=value&key=value
       对应页面通过this.$route.query.key来获取传过来的参数值
       -->
@@ -43,6 +43,7 @@ export default {
   methods: {
     navigate() {
       /* 编程式导航：
+        简写：this.$router.push("path")
         通过path：this.$router.push(path) 或者 this.$router.push({path:'path',query: {k:v})
         通过name：this.$router.push({name:'routerName',query:{k:v})
       */
@@ -61,8 +62,8 @@ export default {
           id: '12345'
         },
         query: {
-          k1: 'v1',
-          k2: 'v2'
+          k1: 'v666',
+          k2: 'v666'
         }
       })
     }

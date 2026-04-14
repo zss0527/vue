@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import './assets/styles/index.css'
-import CommonButton from "@/components/CommonButton.vue";
+import CommonButton from "@/components/common/CommonButton.vue";
 import {focus} from "@/directives";
 import router from "@/router";
 import store from "@/store";
