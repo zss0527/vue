@@ -13,7 +13,7 @@ state: 仓库中共享的数据，组件中访问state数据两种方式：
             ...mapState(['count']), //在数组中通过展开运算符获取想要的状态变量
         }
 
-mutations: 严格模式下mutations是唯一直接同步修改state数据的途径，
+mutations: 严格模式下mutations是唯一直接同步修改state数据的途径,组件不能直接修改store中的state，组件中不能通过v-model绑定store中的state
     组件中可通过两种方式调用mutation函数
         1. 在组件中通过this.$store.commit('mutation name', payload)
         2. 自动封装methods：mapMutations辅助函数会自动把store中的mutation函数映射到组件中的methods中
@@ -46,12 +46,12 @@ getters: 从state中派生出来一些数据,getter中不能调用actions或者m
 如果是划分模块了的话，那么：
     1.mapState,mapActions,mapMutations,mapGetters：
       默认基于根模块展开；
-      开启命名空间后，第一个参数改为对应的模块名第二个参数为展开数组，则直接返回对应模块内的数据；
+      开启命名空间后，第一个参数改为对应的模块名,第二个参数为展开数组直接返回对应模块内的state，mutations，actions或者getters；
     2.通过原生方式访问的话:
         this.$store.state.module.xxx;
-        this.$store.commit('moduleName/mutation',payload);
-        this.$store.dispatch('moduleName/action',payload);
-        this.$store.getters['moduleName/getter'];
+        this.$store.commit('moduleName/mutationName',payload);
+        this.$store.dispatch('moduleName/actionName',payload);
+        this.$store.getters['moduleName/getterName'];
 
  */
 

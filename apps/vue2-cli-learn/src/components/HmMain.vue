@@ -56,6 +56,7 @@ export default {
   },
   /*
   跨代传值例如父到孙，除了传统的每一层用props间接传递，更简单直接的方式是provide和inject语法
+  注意provide提供数据的地方数据发生了改变，使用的地方不会更新，即不是响应式的
    */
   provide() {
     return {
