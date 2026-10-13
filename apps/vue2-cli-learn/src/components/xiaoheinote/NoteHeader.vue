@@ -18,10 +18,13 @@ export default {
     }
   },
   methods: {
-    addTodoItem() {
+    addTodoItemInner() {
       if(this.todoItem.trim() === '') {
         alert('Please input todo item!')
       } else {
+        //emit的第一个参数名为该组件将会新添的事件名，第二个参数为父组件调用这个事件收到的值一般通过$event接收（也可以说是子组件向父组件传递的值）
+        //react中则是父组件定义好函数后直接通过一个props传给子组件，子组件在触发逻辑中直接调用这个props并传值
+        //vue和react子传父形式上有差别但本质一样，都是父组件定义函数子组件触发，只不过react中是子组件直接调用这个函数，vue中通过this.$emit发射出去感觉像是父组件在监听这个事件，相当于比react多了一步是间接；本质一样一个间接一个直接；
         this.$emit('addTodoItem',{id:+new Date,name: this.todoItem})
         this.todoItem = ''
       }
@@ -42,8 +45,8 @@ export default {
 <template>
   <header class="header">
     <h1>{{title}}</h1>
-    <input ref="inputTodoItem" :placeholder="this.initTodoItem.name" class="new-todo" v-model.trim="todoItem" @keyup.enter="addTodoItem"/>
-    <button class="add button" @click="addTodoItem">添加任务</button>
+    <input ref="inputTodoItem" :placeholder="this.initTodoItem.name" class="new-todo" v-model.trim="todoItem" @keyup.enter="addTodoItemInner"/>
+    <button class="add button" @click="addTodoItemInner">添加任务</button>
   </header>
 </template>
 

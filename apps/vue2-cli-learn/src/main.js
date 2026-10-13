@@ -41,9 +41,19 @@ Vue.directive('focus',focus)
 2. 创建store
   2.1 import Vuex from 'vuex'
   2.2 安装注册 Vue.use(Vuex)
-  2.3 创建Vuex.Store()实例
+  2.3 创建实例const store = new Vuex.Store({
+    strict: true,
+    modules: {
+        vuexLearn,
+        cart
+    }
+})
 
 3. 将store对象注入到Vue实例中
+  new Vue({
+      store,
+      render: h => h(App)
+    })
  */
 
 //创建Vue实例并绑定容器

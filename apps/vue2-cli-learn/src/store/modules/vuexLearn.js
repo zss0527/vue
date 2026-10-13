@@ -43,15 +43,15 @@ getters: 从state中派生出来一些数据,getter中不能调用actions或者m
 */
 
 /*
-如果是划分模块了的话，那么：
+如果是划分模块了的话(一般都会划分模块），那么：
     1.mapState,mapActions,mapMutations,mapGetters：
       默认基于根模块展开；
-      开启命名空间后，第一个参数改为对应的模块名,第二个参数为展开数组直接返回对应模块内的state，mutations，actions或者getters；
+      开启命名空间后（一般都会开启命名空间），第一个参数改为对应的模块名（根index中modules中的key的名字）,第二个参数为展开数组直接返回对应模块内的state，mutations，actions或者getters；
     2.通过原生方式访问的话:
         this.$store.state.module.xxx;
         this.$store.commit('moduleName/mutationName',payload);
         this.$store.dispatch('moduleName/actionName',payload);
-        this.$store.getters['moduleName/getterName'];
+        this.$store.getters['moduleName/getterName']; //注意这里getters是个数组
 
  */
 
