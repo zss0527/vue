@@ -11,7 +11,7 @@
         <BaseCount ref="lastBaseCount" class="base-count" @updateMsg="modifyMsg($event)"></BaseCount>
         <button v-if="!needInputLastCountValue" @click="switchToInput" style="height: 40%; margin-top: 10px;">update count</button>
         <div v-else v-focus style="display: flex; height: 40%; margin-top: 10px;">
-          <!-- ref用在dom元素上，之后可以通过$refs.refName.xxx来访问这个dom；
+          <!-- ref用在dom元素上ref="refName"，之后可以通过$refs.refName.xxx来访问这个dom；
                ref用在组件上，之后可以通过$refs.refName.xxx来访问这个组件的属性或者方法；
           -->
           <input v-model.trim.number="stepValue" ref="inputCount" style="width: 40%;margin-right: 5px"/>
