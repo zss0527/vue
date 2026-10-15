@@ -13,6 +13,10 @@ provide('appData','grandFather Data')
 </script>
 
 <template>
+  <router-view></router-view>
+  <router-link to="/">Home</router-link>
+  <p></p>
+  <router-link to="/content">Content</router-link>
   <h1>You did it!</h1>
   <div style="border: 1px black solid; margin: 2px;">
     <h3>setup()</h3>
