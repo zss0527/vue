@@ -1,6 +1,6 @@
 <script setup>
 
-import PropsEmitsRefExpose2 from "@/components/propsemitsrefexpose2.vue";
+import PropsemitsrefexposeS from "@/components/propsemitsrefexposeS.vue";
 import {ref} from "vue";
 
 const money = ref(500)
@@ -30,7 +30,7 @@ const sonRef = ref(null)
     <button style="margin: 0 20px;" @click="getSonMoney">getSonOriginMoney</button>
     {{sonMoney}}
   </div>
-  <PropsEmitsRefExpose2 :money="money" @lendMoney="decreaseMoney($event)" ref="sonRef"></PropsEmitsRefExpose2>
+  <PropsemitsrefexposeS :money="money" @lendMoney="decreaseMoney($event)" ref="sonRef"></PropsemitsrefexposeS>
 </div>
 </template>
 

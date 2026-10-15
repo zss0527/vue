@@ -1,6 +1,6 @@
 <script setup>
 /*
-1. defineOptions可以用来定义任意的options选贤（除了props，emits，expose，slots，这些有单独的宏函数）
+1. defineOptions用来定义vue2中那些组件的meta data例如name、inheritAttrs（除了props，emits，expose，slots，这些有单独的宏函数）
 2. vue3中双向绑定的属性和事件分别是:modelValue和@update:modelValue(父组件可以通过v-model:xxx中的xxx代替modelValue这部份的默认值);
     defineModel简化了defineProps和defineEmits这两步
  */

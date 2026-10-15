@@ -4,7 +4,7 @@ import RefReactiveLearn from "@/components/refreactivelearn.vue";
 import ComputedLearn from "@/components/computedlearn.vue";
 import WatchLearn from "@/components/watchlearn.vue";
 import LifeCycleLearn from "@/components/lifecyclelearn.vue"
-import PropsEmitsRefExpose1 from '@/components/propsemitsrefexpose1.vue'
+import PropsemitsrefexposeF from '@/components/propsemitsrefexposeF.vue'
 import OptionsModel from '@/components/optionsmodel.vue'
 import PiniaLearn from '@/components/pinialearn.vue'
 import {provide} from "vue";
@@ -45,7 +45,7 @@ provide('appData','grandFather Data')
 
   <div style="border: 1px black solid; margin: 2px;">
     <h3>defineProps({k:Type}) defineEmits(['even-name'] defineExpose({data1,data2}) provide('k1',v1) inject('k1')</h3>
-    <PropsEmitsRefExpose1></PropsEmitsRefExpose1>
+    <PropsemitsrefexposeF></PropsemitsrefexposeF>
   </div>
 
   <div style="border: 1px black solid; margin: 2px;">

@@ -1,9 +1,15 @@
 <script setup>
 /* 父子组件传值：
 1.因为setup结构，无法直接配置props选项，vue3提供了编译器宏defineProps来接收父组件传过来的值；
-  defineProps({k1:Type})
-2.
-
+  const props = defineProps({k1:Type})
+  const myData = props.k1
+2.通过defineEmits函数声明事件列表
+  const emit = defineEmits(['eventName1','eventName2'...])
+  emit('eventName1',payload)
+3.子组件可以通过defineExpose({})向父组件暴露数据和方法，父组件通过ref='refName'拿到，并通过refName.value.xxx拿到暴露的数据或者方法
+  defineExpose({data1,method1})
+  <SonCom ref="myRef"/>
+  myRef.value.method1() //vue2默认全部暴露，父组件通过this.$refs.myRef.xxx调用
  */
 import {inject, onMounted, ref} from "vue";
 
