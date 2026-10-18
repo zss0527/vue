@@ -18,13 +18,11 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: (source, filename) => {
-          const normalizedFilename = filename.replace(/\\/g, '/')
-          if (normalizedFilename.endsWith('/styles/element/index.scss')) {
-            return source
-          }
-          return `@use "@/styles/element/index.scss" as *;\n${source}`
-        },
+        //additionalData相当于预先将@use后的scss文件添加到所有的scss文件前
+        additionalData: `
+          @use "@/styles/element/index.scss" as *;
+          @use "@/styles/var.scss" as *;
+        `
       },
     },
   },
