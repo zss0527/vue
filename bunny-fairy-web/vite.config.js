@@ -10,6 +10,24 @@ import {ElementPlusResolver} from "unplugin-vue-components/resolvers";
 
 // https://vite.dev/config/
 export default defineConfig({
+  resolve: {
+    alias: {
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+    },
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: (source, filename) => {
+          const normalizedFilename = filename.replace(/\\/g, '/')
+          if (normalizedFilename.endsWith('/styles/element/index.scss')) {
+            return source
+          }
+          return `@use "@/styles/element/index.scss" as *;\n${source}`
+        },
+      },
+    },
+  },
   plugins: [
     vue(),
     vueDevTools(),
@@ -17,12 +35,9 @@ export default defineConfig({
       resolvers: [ElementPlusResolver()],
     }),
     Components({
-      resolvers: [ElementPlusResolver()],
-    }),
+      resolvers: [ElementPlusResolver({
+        importStyle: "sass"
+      })],
+    })
   ],
-  resolve: {
-    alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url)),
-    },
-  },
 })
